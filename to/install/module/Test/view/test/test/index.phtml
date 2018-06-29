@@ -1,0 +1,85 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/vue.js"></script>
+<script type="text/javascript" src="/js/vue-resource.js"></script>
+
+</head>
+<body>
+
+
+
+
+<div id="app">
+    <label>1) 3, 5, 9, 15, X. Find X Value. </label><br />
+    <br />
+    <button v-on:click="firstq">Answer</button> <br />
+    <br />
+    <span>{{first}}</span>
+			
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <label>2) (Y + 24)+(10 x 2) = 99. Find Y value</label><br />
+    <br />
+    <button v-on:click="secondq">Answer</button> <br />
+    <br />
+    <span>{{second}}</span>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <label>3) If 1 = 5 , 2 = 25 , 3 = 325 , 4 = 4325 Then 5 = X.              Find X value</label><br />
+
+    <br />
+    <button v-on:click="thirdq">Answer</button> <br />
+    <br />
+    <span>{{third}}</span>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            first: "",
+		 second: "",
+		 third: ""
+        },
+        methods: {
+		firstq: function()
+		{
+			this.$http.get('/test/first').then(function(response){
+			this.first = response.data;
+          });
+		},
+		secondq: function()
+		{
+			this.$http.get('/test/second').then(function(response){
+			this.second = response.data;
+          });
+
+		},
+		thirdq: function()
+		{
+			this.$http.get('/test/third').then(function(response){
+			this.third = response.data;
+          });
+
+		},
+
+	  }
+    });
+</script>
+</div>
+</body>
+</html>
